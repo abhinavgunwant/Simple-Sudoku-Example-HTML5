@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sudoku Example HTML5</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Simple Sudoku Example Using HTML5</h1>
+    <div id="game-area">
+        Time:
+        <div id="timer">
+            00:00:10
+        </div>
+
+        <div class="sudoku-grid">
+            <div class="sudoku-grid__box">
+                <div class="sudoku-grid__box__cell" id="cell00">
+                    <div class="sudoku-grid__box__cell__display">0</div>
+                    <input class="sudoku-grid__box__cell__input" type="number" value="0" max="9" min="1">
+                </div>
+                <div class="sudoku-grid__box__cell" id="cell01">
+                    <div class="sudoku-grid__box__cell__display">0</div>
+                    <input class="sudoku-grid__box__cell__input" type="number" value="0" max="9" min="1">
+                </div>
+                <div class="sudoku-grid__box__cell" id="cell02">
+                    <div class="sudoku-grid__box__cell__display">0</div>
+                    <input class="sudoku-grid__box__cell__input" type="number" value="0" max="9" min="1">
+                </div>
+                <div class="sudoku-grid__box__cell" id="cell03">
+                    <div class="sudoku-grid__box__cell__display">0</div>
+                    <input class="sudoku-grid__box__cell__input" type="number" value="0" max="9" min="1">
+                </div>
+                <div class="sudoku-grid__box__cell" id="cell04">
+                    <div class="sudoku-grid__box__cell__display">0</div>
+                    <input class="sudoku-grid__box__cell__input" type="number" value="0" max="9" min="1">
+                </div>
+                <div class="sudoku-grid__box__cell" id="cell05">
+                    <div class="sudoku-grid__box__cell__display">0</div>
+                    <input class="sudoku-grid__box__cell__input" type="number" value="0" max="9" min="1">
+                </div>
+                <div class="sudoku-grid__box__cell" id="cell06">
+                    <div class="sudoku-grid__box__cell__display">0</div>
+                    <input class="sudoku-grid__box__cell__input" type="number" value="0" max="9" min="1">
+                </div>
+                <div class="sudoku-grid__box__cell" id="cell07">
+                    <div class="sudoku-grid__box__cell__display">0</div>
+                    <input class="sudoku-grid__box__cell__input" type="number" value="0" max="9" min="1">
+                </div>
+                <div class="sudoku-grid__box__cell" id="cell08">
+                    <div class="sudoku-grid__box__cell__display">0</div>
+                    <input class="sudoku-grid__box__cell__input" type="number" value="0" max="9" min="1">
+                </div>
+            </div>
+            <div class="sudoku-grid__box">
+                <div class="sudoku-grid__box__cell" id="cell10">
+                    <div class="sudoku-grid__box__cell__display">0</div>
+                    <input class="sudoku-grid__box__cell__input" type="number" value="0" max="9" min="1">
+                </div>
+                <div class="sudoku-grid__box__cell" id="cell11">
+                    <div class="sudoku-grid__box__cell__display">0</div>
+                    <input class="sudoku-grid__box__cell__input" type="number" value="0" max="9" min="1">
+                </div>
+                <div class="sudoku-grid__box__cell" id="cell12">
+                    <div class="sudoku-grid__box__cell__display">0</div>
+                    <input class="sudoku-grid__box__cell__input" type="number" value="0" max="9" min="1">
+                </div>
+                <div class="sudoku-grid__box__cell" id="cell13">
+                    <div class="sudoku-grid__box__cell__display">0</div>
+                    <input class="sudoku-grid__box__cell__input" type="number" value="0" max="9" min="1">
+                </div>
+                <div class="sudoku-grid__box__cell" id="cell14">
+                    <div class="sudoku-grid__box__cell__display">0</div>
+                    <input class="sudoku-grid__box__cell__input" type="number" value="0" max="9" min="1">
+                </div>
+                <div class="sudoku-grid__box__cell" id="cell15">
+                    <div class="sudoku-grid__box__cell__display">0</div>
+                    <input class="sudoku-grid__box__cell__input" type="number" value="0" max="9" min="1">
+                </div>
+                <div class="sudoku-grid__box__cell" id="cell16">
+                    <div class="sudoku-grid__box__cell__display">0</div>
+                    <input class="sudoku-grid__box__cell__input" type="number" value="0" max="9" min="1">
+                </div>
+                <div class="sudoku-grid__box__cell" id="cell17">
+                    <div class="sudoku-grid__box__cell__display">0</div>
+                    <input class="sudoku-grid__box__cell__input" type="number" value="0" max="9" min="1">
+                </div>
+                <div class="sudoku-grid__box__cell" id="cell18">
+                    <div class="sudoku-grid__box__cell__display">0</div>
+                    <input class="sudoku-grid__box__cell__input" type="number" value="0" max="9" min="1">
+                </div>
+            </div>
+            <div class="sudoku-grid__box">
+                <div class="sudoku-grid__box__cell" id="cell20">
+                    <div class="sudoku-grid__box__cell__display">0</div>
+                    <input class="sudoku-grid__box__cell__input" type="number" value="0" max="9" min="1">
+                </div>
+                <div class="sudoku-grid__box__cell" id="cell21">
+                    <div class="sudoku-grid__box__cell__display">0</div>
+                    <input class="sudoku-grid__box__cell__input" type="number" value="0" max="9" min="1">
+                </div>
+                <div class="sudoku-grid__box__cell" id="cell22">
+                    <div class="sudoku-grid__box__cell__display">0</div>
+                    <input class="sudoku-grid__box__cell__input" type="number" value="0" max="9" min="1">
+                </div>
+                <div class="sudoku-grid__box__cell" id="cell23">
+                    <div class="sudoku-grid__box__cell__display">0</div>
+                    <input class="sudoku-grid__box__cell__input" type="number" value="0" max="9" min="1">
+                </div>
+                <div class="sudoku-grid__box__cell" id="cell24">
+                    <div class="sudoku-grid__box__cell__display">0</div>
+                    <input class="sudoku-grid__box__cell__input" type="number" value="0" max="9" min="1">
+                </div>
+                <div class="sudoku-grid__box__cell" id="cell25">
+                    <div class="sudoku-grid__box__cell__display">0</div>
+                    <input class="sudoku-grid__box__cell__input" type="number" value="0" max="9" min="1">
+                </div>
+                <div class="sudoku-grid__box__cell" id="cell26">
+                    <div class="sudoku-grid__box__cell__display">0</div>
+                    <input class="sudoku-grid__box__cell__input" type="number" value="0" max="9" min="1">
+                </div>
+                <div class="sudoku-grid__box__cell" id="cell27">
+                    <div class="sudoku-grid__box__cell__display">0</div>
+                    <input class="sudoku-grid__box__cell__input" type="number" value="0" max="9" min="1">
+                </div>
+                <div class="sudoku-grid__box__cell" id="cell28">
+                    <div class="sudoku-grid__box__cell__display">0</div>
+                    <input class="sudoku-grid__box__cell__input" type="number" value="0" max="9" min="1">
+                </div>
+            </div>
+            <div class="sudoku-grid__box">
+                <div class="sudoku-grid__box__cell" id="cell30">
+                    <div class="sudoku-grid__box__cell__display">0</div>
+                    <input class="sudoku-grid__box__cell__input" type="number" value="0" max="9" min="1">
+                </div>
+                <div class="sudoku-grid__box__cell" id="cell31">
+                    <div class="sudoku-grid__box__cell__display">0</div>
+                    <input class="sudoku-grid__box__cell__input" type="number" value="0" max="9" min="1">
+                </div>
+                <div class="sudoku-grid__box__cell" id="cell32">
+                    <div class="sudoku-grid__box__cell__display">0</div>
+                    <input class="sudoku-grid__box__cell__input" type="number" value="0" max="9" min="1">
+                </div>
+                <div class="sudoku-grid__box__cell" id="cell33">
+                    <div class="sudoku-grid__box__cell__display">0</div>
+                    <input class="sudoku-grid__box__cell__input" type="number" value="0" max="9" min="1">
+                </div>
+                <div class="sudoku-grid__box__cell" id="cell34">
+                    <div class="sudoku-grid__box__cell__display">0</div>
+                    <input class="sudoku-grid__box__cell__input" type="number" value="0" max="9" min="1">
+                </div>
+                <div class="sudoku-grid__box__cell" id="cell35">
+                    <div class="sudoku-grid__box__cell__display">0</div>
+                    <input class="sudoku-grid__box__cell__input" type="number" value="0" max="9" min="1">
+                </div>
+                <div class="sudoku-grid__box__cell" id="cell36">
+                    <div class="sudoku-grid__box__cell__display">0</div>
+                    <input class="sudoku-grid__box__cell__input" type="number" value="0" max="9" min="1">
+                </div>
+                <div class="sudoku-grid__box__cell" id="cell37">
+                    <div class="sudoku-grid__box__cell__display">0</div>
+                    <input class="sudoku-grid__box__cell__input" type="number" value="0" max="9" min="1">
+                </div>
+                <div class="sudoku-grid__box__cell" id="cell38">
+                    <div class="sudoku-grid__box__cell__display">0</div>
+                    <input class="sudoku-grid__box__cell__input" type="number" value="0" max="9" min="1">
+                </div>
+            </div>
+            <div class="sudoku-grid__box">
+                <div class="sudoku-grid__box__cell" id="cell40">
+                    <div class="sudoku-grid__box__cell__display">0</div>
+                    <input class="sudoku-grid__box__cell__input" type="number" value="0" max="9" min="1">
+                </div>
+                <div class="sudoku-grid__box__cell" id="cell41">
+                    <div class="sudoku-grid__box__cell__display">0</div>
+                    <input class="sudoku-grid__box__cell__input" type="number" value="0" max="9" min="1">
+                </div>
+                <div class="sudoku-grid__box__cell" id="cell42">
+                    <div class="sudoku-grid__box__cell__display">0</div>
+                    <input class="sudoku-grid__box__cell__input" type="number" value="0" max="9" min="1">
+                </div>
+                <div class="sudoku-grid__box__cell" id="cell43">
+                    <div class="sudoku-grid__box__cell__display">0</div>
+                    <input class="sudoku-grid__box__cell__input" type="number" value="0" max="9" min="1">
+                </div>
+                <div class="sudoku-grid__box__cell" id="cell44">
+                    <div class="sudoku-grid__box__cell__display">0</div>
+                    <input class="sudoku-grid__box__cell__input" type="number" value="0" max="9" min="1">
+                </div>
+                <div class="sudoku-grid__box__cell" id="cell45">
+                    <div class="sudoku-grid__box__cell__display">0</div>
+                    <input class="sudoku-grid__box__cell__input" type="number" value="0" max="9" min="1">
+                </div>
+                <div class="sudoku-grid__box__cell" id="cell46">
+                    <div class="sudoku-grid__box__cell__display">0</div>
+                    <input class="sudoku-grid__box__cell__input" type="number" value="0" max="9" min="1">
+                </div>
+                <div class="sudoku-grid__box__cell" id="cell47">
+                    <div class="sudoku-grid__box__cell__display">0</div>
+                    <input class="sudoku-grid__box__cell__input" type="number" value="0" max="9" min="1">
+                </div>
+                <div class="sudoku-grid__box__cell" id="cell48">
+                    <div class="sudoku-grid__box__cell__display">0</div>
+                    <input class="sudoku-grid__box__cell__input" type="number" value="0" max="9" min="1">
+                </div>
+            </div>
+            <div class="sudoku-grid__box">
+                <div class="sudoku-grid__box__cell" id="cell50">
+                    <div class="sudoku-grid__box__cell__display">0</div>
+                    <input class="sudoku-grid__box__cell__input" type="number" value="0" max="9" min="1">
+                </div>
+                <div class="sudoku-grid__box__cell" id="cell51">
+                    <div class="sudoku-grid__box__cell__display">0</div>
+                    <input class="sudoku-grid__box__cell__input" type="number" value="0" max="9" min="1">
+                </div>
+                <div class="sudoku-grid__box__cell" id="cell52">
+                    <div class="sudoku-grid__box__cell__display">0</div>
+                    <input class="sudoku-grid__box__cell__input" type="number" value="0" max="9" min="1">
+                </div>
+                <div class="sudoku-grid__box__cell" id="cell53">
+                    <div class="sudoku-grid__box__cell__display">0</div>
+                    <input class="sudoku-grid__box__cell__input" type="number" value="0" max="9" min="1">
+                </div>
+                <div class="sudoku-grid__box__cell" id="cell54">
+                    <div class="sudoku-grid__box__cell__display">0</div>
+                    <input class="sudoku-grid__box__cell__input" type="number" value="0" max="9" min="1">
+                </div>
+                <div class="sudoku-grid__box__cell" id="cell55">
+                    <div class="sudoku-grid__box__cell__display">0</div>
+                    <input class="sudoku-grid__box__cell__input" type="number" value="0" max="9" min="1">
+                </div>
+                <div class="sudoku-grid__box__cell" id="cell56">
+                    <div class="sudoku-grid__box__cell__display">0</div>
+                    <input class="sudoku-grid__box__cell__input" type="number" value="0" max="9" min="1">
+                </div>
+                <div class="sudoku-grid__box__cell" id="cell57">
+                    <div class="sudoku-grid__box__cell__display">0</div>
+                    <input class="sudoku-grid__box__cell__input" type="number" value="0" max="9" min="1">
+                </div>
+                <div class="sudoku-grid__box__cell" id="cell58">
+                    <div class="sudoku-grid__box__cell__display">0</div>
+                    <input class="sudoku-grid__box__cell__input" type="number" value="0" max="9" min="1">
+                </div>
+            </div>
+            <div class="sudoku-grid__box">
+                <div class="sudoku-grid__box__cell" id="cell60">
+                    <div class="sudoku-grid__box__cell__display">0</div>
+                    <input class="sudoku-grid__box__cell__input" type="number" value="0" max="9" min="1">
+                </div>
+                <div class="sudoku-grid__box__cell" id="cell61">
+                    <div class="sudoku-grid__box__cell__display">0</div>
+                    <input class="sudoku-grid__box__cell__input" type="number" value="0" max="9" min="1">
+                </div>
+                <div class="sudoku-grid__box__cell" id="cell62">
+                    <div class="sudoku-grid__box__cell__display">0</div>
+                    <input class="sudoku-grid__box__cell__input" type="number" value="0" max="9" min="1">
+                </div>
+                <div class="sudoku-grid__box__cell" id="cell63">
+                    <div class="sudoku-grid__box__cell__display">0</div>
+                    <input class="sudoku-grid__box__cell__input" type="number" value="0" max="9" min="1">
+                </div>
+                <div class="sudoku-grid__box__cell" id="cell64">
+                    <div class="sudoku-grid__box__cell__display">0</div>
+                    <input class="sudoku-grid__box__cell__input" type="number" value="0" max="9" min="1">
+                </div>
+                <div class="sudoku-grid__box__cell" id="cell65">
+                    <div class="sudoku-grid__box__cell__display">0</div>
+                    <input class="sudoku-grid__box__cell__input" type="number" value="0" max="9" min="1">
+                </div>
+                <div class="sudoku-grid__box__cell" id="cell66">
+                    <div class="sudoku-grid__box__cell__display">0</div>
+                    <input class="sudoku-grid__box__cell__input" type="number" value="0" max="9" min="1">
+                </div>
+                <div class="sudoku-grid__box__cell" id="cell67">
+                    <div class="sudoku-grid__box__cell__display">0</div>
+                    <input class="sudoku-grid__box__cell__input" type="number" value="0" max="9" min="1">
+                </div>
+                <div class="sudoku-grid__box__cell" id="cell68">
+                    <div class="sudoku-grid__box__cell__display">0</div>
+                    <input class="sudoku-grid__box__cell__input" type="number" value="0" max="9" min="1">
+                </div>
+            </div>
+            <div class="sudoku-grid__box">
+                <div class="sudoku-grid__box__cell" id="cell70">
+                    <div class="sudoku-grid__box__cell__display">0</div>
+                    <input class="sudoku-grid__box__cell__input" type="number" value="0" max="9" min="1">
+                </div>
+                <div class="sudoku-grid__box__cell" id="cell71">
+                    <div class="sudoku-grid__box__cell__display">0</div>
+                    <input class="sudoku-grid__box__cell__input" type="number" value="0" max="9" min="1">
+                </div>
+                <div class="sudoku-grid__box__cell" id="cell72">
+                    <div class="sudoku-grid__box__cell__display">0</div>
+                    <input class="sudoku-grid__box__cell__input" type="number" value="0" max="9" min="1">
+                </div>
+                <div class="sudoku-grid__box__cell" id="cell73">
+                    <div class="sudoku-grid__box__cell__display">0</div>
+                    <input class="sudoku-grid__box__cell__input" type="number" value="0" max="9" min="1">
+                </div>
+                <div class="sudoku-grid__box__cell" id="cell74">
+                    <div class="sudoku-grid__box__cell__display">0</div>
+                    <input class="sudoku-grid__box__cell__input" type="number" value="0" max="9" min="1">
+                </div>
+                <div class="sudoku-grid__box__cell" id="cell75">
+                    <div class="sudoku-grid__box__cell__display">0</div>
+                    <input class="sudoku-grid__box__cell__input" type="number" value="0" max="9" min="1">
+                </div>
+                <div class="sudoku-grid__box__cell" id="cell76">
+                    <div class="sudoku-grid__box__cell__display">0</div>
+                    <input class="sudoku-grid__box__cell__input" type="number" value="0" max="9" min="1">
+                </div>
+                <div class="sudoku-grid__box__cell" id="cell77">
+                    <div class="sudoku-grid__box__cell__display">0</div>
+                    <input class="sudoku-grid__box__cell__input" type="number" value="0" max="9" min="1">
+                </div>
+                <div class="sudoku-grid__box__cell" id="cell78">
+                    <div class="sudoku-grid__box__cell__display">0</div>
+                    <input class="sudoku-grid__box__cell__input" type="number" value="0" max="9" min="1">
+                </div>
+            </div>
+            <div class="sudoku-grid__box">
+                <div class="sudoku-grid__box__cell" id="cell80">
+                    <div class="sudoku-grid__box__cell__display">0</div>
+                    <input class="sudoku-grid__box__cell__input" type="number" value="0" max="9" min="1">
+                </div>
+                <div class="sudoku-grid__box__cell" id="cell81">
+                    <div class="sudoku-grid__box__cell__display">0</div>
+                    <input class="sudoku-grid__box__cell__input" type="number" value="0" max="9" min="1">
+                </div>
+                <div class="sudoku-grid__box__cell" id="cell82">
+                    <div class="sudoku-grid__box__cell__display">0</div>
+                    <input class="sudoku-grid__box__cell__input" type="number" value="0" max="9" min="1">
+                </div>
+                <div class="sudoku-grid__box__cell" id="cell83">
+                    <div class="sudoku-grid__box__cell__display">0</div>
+                    <input class="sudoku-grid__box__cell__input" type="number" value="0" max="9" min="1">
+                </div>
+                <div class="sudoku-grid__box__cell" id="cell84">
+                    <div class="sudoku-grid__box__cell__display">0</div>
+                    <input class="sudoku-grid__box__cell__input" type="number" value="0" max="9" min="1">
+                </div>
+                <div class="sudoku-grid__box__cell" id="cell85">
+                    <div class="sudoku-grid__box__cell__display">0</div>
+                    <input class="sudoku-grid__box__cell__input" type="number" value="0" max="9" min="1">
+                </div>
+                <div class="sudoku-grid__box__cell" id="cell86">
+                    <div class="sudoku-grid__box__cell__display">0</div>
+                    <input class="sudoku-grid__box__cell__input" type="number" value="0" max="9" min="1">
+                </div>
+                <div class="sudoku-grid__box__cell" id="cell87">
+                    <div class="sudoku-grid__box__cell__display">0</div>
+                    <input class="sudoku-grid__box__cell__input" type="number" value="0" max="9" min="1">
+                </div>
+                <div class="sudoku-grid__box__cell" id="cell88">
+                    <div class="sudoku-grid__box__cell__display">0</div>
+                    <input class="sudoku-grid__box__cell__input" type="number" value="0" max="9" min="1">
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="index.js"></script>
+</body>
+</html>

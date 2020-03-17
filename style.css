@@ -1,0 +1,37 @@
+body { margin: 0; }
+
+#game-area {
+    padding: 20px;
+}
+
+#timer {
+    display: inline-block;
+}
+
+.sudoku-grid, .sudoku-grid__box {
+    display: grid;
+    grid-template-columns: auto auto auto;
+}
+
+.sudoku-grid {
+    height: 400px;
+    width: 400px;
+}
+
+.sudoku-grid__box, .sudoku-grid__box__cell {
+    border: #000000 1px solid;
+}
+
+.sudoku-grid__box__cell__display, .sudoku-grid__box__cell__input {
+    padding: 20px;
+}
+
+.sudoku-grid__box__cell__input {
+    display: none;
+    width: 10px;
+}
+
+.sudoku-grid__box__cell__input::-webkit-inner-spin-button,
+.sudoku-grid__box__cell__input::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+}
