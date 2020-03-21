@@ -1,6 +1,7 @@
 body { margin: 0; }
 
 #game-area {
+    font-family: sans-serif;
     padding: 20px;
 }
 
@@ -23,12 +24,17 @@ body { margin: 0; }
 }
 
 .sudoku-grid__box__cell__display, .sudoku-grid__box__cell__input {
-    padding: 20px;
+    font-size: 2em;
+    padding: 10px 16px;
 }
 
 .sudoku-grid__box__cell__input {
     display: none;
-    width: 10px;
+    width: 16px;
+}
+
+.sudoku-grid__box__cell__input:active, .sudoku-grid__box__cell__input:focus {
+    padding: 8px 15px;
 }
 
 .sudoku-grid__box__cell__input::-webkit-inner-spin-button,
