@@ -9,9 +9,16 @@
 <body>
     <h1>Simple Sudoku Example Using HTML5</h1>
     <div id="game-area">
-        Time:
-        <div id="timer">
-            00:00:10
+        <div id="timer-wrapper" style="display:none">
+            Time: 
+            <div id="timer">
+                00:00:00
+            </div>
+        </div>
+
+        <div id="buttons">
+            <button id="buttons__reset" style="display:none">Reset</button>
+            <button id="buttons__start">Start</button>
         </div>
 
         <div class="sudoku-grid">

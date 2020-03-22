@@ -1,16 +1,56 @@
-const gridCellElems = document.getElementsByClassName('sudoku-grid__box__cell');
+const gridCellElems     = document.getElementsByClassName('sudoku-grid__box__cell');
+const startElem         = document.getElementById('buttons__start');
+const resetElem         = document.getElementById('buttons__reset');
+const timerElem         = document.getElementById('timer');
+const timerWrapperElem  = document.getElementById('timer-wrapper');
 
-const initSudokuGrid = (grid) => {
+let gameStarted = false;
+
+/**
+ * Padds numbers with a single leading zero (for displaying hours, minutes
+ * and seconds in the timer).
+ * 
+ * @param {number} num 
+ */
+const padZero = (num) => {
+    if (num < 10) {
+        return '0' + num;
+    } else {
+        return num;
+    }
+}
+
+/**
+ * Initializes the sudoku grid with numbers in `grid` array.
+ * 
+ * @param {Array<number>} grid - A 2d array of representing sudoku cells.
+ * @param {Boolean} problem - Whether the given grid is a sudoku problem or not. 
+ */
+const initSudokuGrid = (grid, problem = false) => {
     sudokuEls = getSudokuGridElems();
     
     for (let i=0; i<9; ++i) {
         for(let j=0; j<9; ++j) {
             sudokuEls[i][j].querySelector('.sudoku-grid__box__cell__display').innerHTML = grid[i][j];
-            sudokuEls[i][j].querySelector('.sudoku-grid__box__cell__input').value = grid[i][j]
+            sudokuEls[i][j].querySelector('.sudoku-grid__box__cell__input').value = grid[i][j];
+
+            // If it's a problem, make the problem numbers uneditable (input field disabled!),
+            // and make the background grey.
+            if (problem === true) {
+                if (grid[i][j] === 0) {
+                    sudokuEls[i][j].querySelector('.sudoku-grid__box__cell__display').innerHTML = '';
+                } else {
+                    sudokuEls[i][j].style.background = '#dddddd';
+                    sudokuEls[i][j].querySelector('.sudoku-grid__box__cell__input').disabled = true;
+                }
+            }
         }
     }
 };
 
+/**
+ * Returns all the cell dom elements in the sudoku grid in a 2d grid.
+ */
 const getSudokuGridElems = () => {
     return [[
             document.getElementById('cell-00-00'),
@@ -105,6 +145,98 @@ const getSudokuGridElems = () => {
     ]];
 }
 
+
+/**
+ * Called by the "Start" button.
+ * Starts the game by selecting a sudoku problem, rendering it on the
+ * screen and starts the timer from 00:00:00.
+ */
+const startGame = () => {
+    if (gameStarted) {
+        return;
+    }
+
+    console.log('Starting game...');
+
+    let problemGrid = [];
+
+    let solutionGrid = [];
+
+    // Generate a grid here
+    problemGrid = [
+        [5, 3, 0, 0, 7, 0, 0, 0, 0],
+        [6, 0, 0, 1, 9, 5, 0, 0, 0],
+        [0, 9, 8, 0, 0, 0, 0, 6, 0],
+        [8, 0, 0, 0, 6, 0, 0, 0, 3],
+        [4, 0, 0, 8, 0, 3, 0, 0, 1],
+        [7, 0, 0, 0, 2, 0, 0, 0, 6],
+        [0, 6, 0, 0, 0, 7, 2, 8, 0],
+        [0, 0, 0, 4, 1, 9, 0, 0, 5],
+        [0, 0, 0, 0, 8, 0, 0, 7, 9],
+    ];
+
+    solutionGrid = [
+        [5, 3, 4, 6, 7, 8, 9, 1, 2],
+        [6, 7, 2, 1, 9, 5, 3, 4, 8],
+        [1, 9, 8, 3, 4, 2, 5, 6, 7],
+        [8, 5, 9, 7, 6, 1, 4, 2, 3],
+        [4, 2, 6, 8, 5, 3, 7, 9, 1],
+        [7, 1, 3, 9, 2, 4, 8, 5, 6],
+        [9, 6, 1, 5, 3, 7, 2, 8, 4],
+        [2, 8, 7, 4, 1, 9, 6, 3, 5],
+        [3, 4, 5, 2, 8, 6, 1, 7, 9],
+    ];
+
+    // Render the sudoku problem
+    initSudokuGrid(problemGrid, true);
+
+    // Start the timer
+    let startDate = new Date();
+    let currentDate = new Date();
+    let dateDiff = null;
+    let dateDiffMin = 0;
+    let dateDiffHrs = 0;
+
+    window.gameTimerInterval = setInterval(() => {
+        currentDate = new Date();
+        
+        dateDiff = Math.ceil((currentDate.getTime() - startDate.getTime())/1000);
+        dateDiffMin = Math.floor(dateDiff/60);
+        dateDiffHrs = Math.floor(dateDiff/3600);
+
+        timerElem.innerHTML = padZero(dateDiffHrs)
+            + ':' + padZero(dateDiffMin)
+            + ':' + padZero(dateDiff - dateDiffMin * 60 - dateDiffHrs * 3600);
+    }, 250);
+
+    timerWrapperElem.style.display = 'block';
+    startElem.style.display = 'none';
+    resetElem.style.display = 'block';
+
+    gameStarted = true;
+}
+
+/**
+ * Resets the timer to 0, and the grid to the initial state
+ */
+const resetGame = () => {
+    if (gameStarted) {
+        clearInterval(window.gameTimerInterval);
+    }
+
+    gameStarted = false;
+    timerElem.innerHTML = 'Resetting...';
+
+    startGame();
+}
+
+/**
+ * Checks if the game is finished!
+ */
+const checkSolution = () => {
+
+}
+
 window.addEventListener('mousedown', (event) => {
     const sudokuCellDisplay = document.querySelectorAll('.sudoku-grid__box__cell');
     
@@ -136,6 +268,11 @@ for (let i=0; i<gridCellElems.length; ++i) {
     let cellInput = gridCellElem.querySelector('input.sudoku-grid__box__cell__input');
 
     gridCellElem.addEventListener('click', (event) => {
+        // If the input is disabled, don't do anything!
+        if (event.currentTarget.querySelector('input.sudoku-grid__box__cell__input').disabled){
+            return;
+        }
+
         if (cellDisplay.style.display === 'none') {
             cellDisplay.style.display = 'block';
             cellInput.style.display = 'none';
@@ -151,7 +288,6 @@ for (let i=0; i<gridCellElems.length; ++i) {
     cellInput.addEventListener('change', (event) => {
         let oldValue = cellInput.getAttribute('oldValue');
 
-
         if (event.target.value == null || event.target.value == 0){
             cellDisplay.innerHTML = '';
             return;
@@ -164,3 +300,6 @@ for (let i=0; i<gridCellElems.length; ++i) {
         }
     });
 }
+
+startElem.addEventListener('click', () => { startGame() });
+resetElem.addEventListener('click', () => { resetGame() });

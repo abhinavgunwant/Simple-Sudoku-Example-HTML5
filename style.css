@@ -26,6 +26,8 @@ body { margin: 0; }
 .sudoku-grid__box__cell__display, .sudoku-grid__box__cell__input {
     font-size: 2em;
     padding: 10px 16px;
+    height: 36px;
+    width: 18px;
 }
 
 .sudoku-grid__box__cell__input {
