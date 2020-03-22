@@ -43,3 +43,33 @@ body { margin: 0; }
 .sudoku-grid__box__cell__input::-webkit-outer-spin-button {
     -webkit-appearance: none;
 }
+
+button {
+    background: #444444;
+    padding: 8px 16px;
+    border: none;
+    color: #ffffff;
+    border-radius: 3px;
+    margin: 5px;
+}
+
+button:hover {
+    background: #333333;
+    cursor: pointer;
+}
+
+button:active {
+    background: #000000;
+}
+
+#buttons {
+    display: flex;
+}
+
+#buttons button:first-child {
+    margin-left: 0;
+}
+
+#buttons button:last-child {
+    margin-right: 0;
+}
