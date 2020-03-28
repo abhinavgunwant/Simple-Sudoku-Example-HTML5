@@ -1,6 +1,14 @@
-body { margin: 0; }
+body {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin: 0;
+}
 
 #game-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     font-family: sans-serif;
     padding: 20px;
 }
@@ -66,10 +74,29 @@ button:active {
     display: flex;
 }
 
-#buttons button:first-child {
+/* #buttons button:first-child {
     margin-left: 0;
 }
 
 #buttons button:last-child {
     margin-right: 0;
+} */
+
+#game-area, #menu {
+    margin: 0 auto;
+}
+
+#menu > #menu-title {
+    text-align: center;
+}
+
+#menu > #menu-option {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#menu-text {
+    font-size: 20px;
+    color: #4444ff;
 }

@@ -4,6 +4,12 @@ const startDiffElem     = document.getElementById('buttons__start-different');
 const resetElem         = document.getElementById('buttons__reset');
 const timerElem         = document.getElementById('timer');
 const timerWrapperElem  = document.getElementById('timer-wrapper');
+const gameAreaElem      = document.getElementById('game-area');
+const menuElem          = document.getElementById('menu');
+const menuTitleElem     = document.getElementById('menu-title');
+const menuTextElem      = document.getElementById('menu-text');
+const menuOptionElem    = document.getElementById('menu-option');
+const menuOptionStElem  = document.getElementById('menu-option__start');
 
 let gameStarted = false;
 
@@ -32,7 +38,7 @@ const padZero = (num) => {
  * @param {Boolean} problem - Whether the given grid is a sudoku problem or not. 
  */
 const initSudokuGrid = (grid, problem = false) => {
-    sudokuEls = getSudokuGridElems();
+    // sudokuEls = getSudokuGridElems();
     
     for (let i=0; i<9; ++i) {
         for(let j=0; j<9; ++j) {
@@ -46,6 +52,7 @@ const initSudokuGrid = (grid, problem = false) => {
                     sudokuEls[i][j].querySelector('.sudoku-grid__box__cell__display').innerHTML = '';
                 } else {
                     sudokuEls[i][j].style.background = '#dddddd';
+                    sudokuEls[i][j].setAttribute('readonly', 'true')
                     sudokuEls[i][j].querySelector('.sudoku-grid__box__cell__input').disabled = true;
                 }
             }
@@ -54,102 +61,86 @@ const initSudokuGrid = (grid, problem = false) => {
 };
 
 /**
- * Returns all the cell dom elements in the sudoku grid in a 2d grid.
+ * Contains all the cell dom elements in the sudoku grid in a 2d grid.
  */
-const getSudokuGridElems = () => {
-    return [[
-            document.getElementById('cell-00-00'),
-            document.getElementById('cell-01-01'),
-            document.getElementById('cell-02-02'),
-            document.getElementById('cell-03-10'),
-            document.getElementById('cell-04-11'),
-            document.getElementById('cell-05-12'),
-            document.getElementById('cell-06-20'),
-            document.getElementById('cell-07-21'),
-            document.getElementById('cell-08-22'),
-        ], [
-            document.getElementById('cell-10-03'),
-            document.getElementById('cell-11-04'),
-            document.getElementById('cell-12-05'),
-            document.getElementById('cell-13-13'),
-            document.getElementById('cell-14-14'),
-            document.getElementById('cell-15-15'),
-            document.getElementById('cell-16-23'),
-            document.getElementById('cell-17-24'),
-            document.getElementById('cell-18-25'),
-        ], [
-            document.getElementById('cell-20-06'),
-            document.getElementById('cell-21-07'),
-            document.getElementById('cell-22-08'),
-            document.getElementById('cell-23-16'),
-            document.getElementById('cell-24-17'),
-            document.getElementById('cell-25-18'),
-            document.getElementById('cell-26-26'),
-            document.getElementById('cell-27-27'),
-            document.getElementById('cell-28-28'),
-        ], [
-            document.getElementById('cell-30-30'),
-            document.getElementById('cell-31-31'),
-            document.getElementById('cell-32-32'),
-            document.getElementById('cell-33-40'),
-            document.getElementById('cell-34-41'),
-            document.getElementById('cell-35-42'),
-            document.getElementById('cell-36-50'),
-            document.getElementById('cell-37-51'),
-            document.getElementById('cell-38-52'),
-        ], [
-            document.getElementById('cell-40-33'),
-            document.getElementById('cell-41-34'),
-            document.getElementById('cell-42-35'),
-            document.getElementById('cell-43-43'),
-            document.getElementById('cell-44-44'),
-            document.getElementById('cell-45-45'),
-            document.getElementById('cell-46-53'),
-            document.getElementById('cell-47-54'),
-            document.getElementById('cell-48-55'),
-        ], [
-            document.getElementById('cell-50-36'),
-            document.getElementById('cell-51-37'),
-            document.getElementById('cell-52-38'),
-            document.getElementById('cell-53-46'),
-            document.getElementById('cell-54-47'),
-            document.getElementById('cell-55-48'),
-            document.getElementById('cell-56-56'),
-            document.getElementById('cell-57-57'),
-            document.getElementById('cell-58-58'),
-        ], [
-            document.getElementById('cell-60-60'),
-            document.getElementById('cell-61-61'),
-            document.getElementById('cell-62-62'),
-            document.getElementById('cell-63-70'),
-            document.getElementById('cell-64-71'),
-            document.getElementById('cell-65-72'),
-            document.getElementById('cell-66-80'),
-            document.getElementById('cell-67-81'),
-            document.getElementById('cell-68-82'),
-        ], [
-            document.getElementById('cell-70-63'),
-            document.getElementById('cell-71-64'),
-            document.getElementById('cell-72-65'),
-            document.getElementById('cell-73-73'),
-            document.getElementById('cell-74-74'),
-            document.getElementById('cell-75-75'),
-            document.getElementById('cell-76-83'),
-            document.getElementById('cell-77-84'),
-            document.getElementById('cell-78-85'),
-        ], [
-            document.getElementById('cell-80-66'),
-            document.getElementById('cell-81-67'),
-            document.getElementById('cell-82-68'),
-            document.getElementById('cell-83-76'),
-            document.getElementById('cell-84-77'),
-            document.getElementById('cell-85-78'),
-            document.getElementById('cell-86-86'),
-            document.getElementById('cell-87-87'),
-            document.getElementById('cell-88-88'),
-    ]];
-}
+const sudokuEls = [[
+        document.getElementById('cell-00-00'), document.getElementById('cell-01-01'), document.getElementById('cell-02-02'),
+        document.getElementById('cell-03-10'), document.getElementById('cell-04-11'), document.getElementById('cell-05-12'),
+        document.getElementById('cell-06-20'), document.getElementById('cell-07-21'), document.getElementById('cell-08-22'),
+    ], [
+        document.getElementById('cell-10-03'), document.getElementById('cell-11-04'), document.getElementById('cell-12-05'),
+        document.getElementById('cell-13-13'), document.getElementById('cell-14-14'), document.getElementById('cell-15-15'),
+        document.getElementById('cell-16-23'), document.getElementById('cell-17-24'), document.getElementById('cell-18-25'),
+    ], [
+        document.getElementById('cell-20-06'), document.getElementById('cell-21-07'), document.getElementById('cell-22-08'),
+        document.getElementById('cell-23-16'), document.getElementById('cell-24-17'), document.getElementById('cell-25-18'),
+        document.getElementById('cell-26-26'), document.getElementById('cell-27-27'), document.getElementById('cell-28-28'),
+    ], [
+        document.getElementById('cell-30-30'), document.getElementById('cell-31-31'), document.getElementById('cell-32-32'),
+        document.getElementById('cell-33-40'), document.getElementById('cell-34-41'), document.getElementById('cell-35-42'),
+        document.getElementById('cell-36-50'), document.getElementById('cell-37-51'), document.getElementById('cell-38-52'),
+    ], [
+        document.getElementById('cell-40-33'), document.getElementById('cell-41-34'), document.getElementById('cell-42-35'),
+        document.getElementById('cell-43-43'), document.getElementById('cell-44-44'), document.getElementById('cell-45-45'),
+        document.getElementById('cell-46-53'), document.getElementById('cell-47-54'), document.getElementById('cell-48-55'),
+    ], [
+        document.getElementById('cell-50-36'), document.getElementById('cell-51-37'), document.getElementById('cell-52-38'),
+        document.getElementById('cell-53-46'), document.getElementById('cell-54-47'), document.getElementById('cell-55-48'),
+        document.getElementById('cell-56-56'), document.getElementById('cell-57-57'), document.getElementById('cell-58-58'),
+    ], [
+        document.getElementById('cell-60-60'), document.getElementById('cell-61-61'), document.getElementById('cell-62-62'),
+        document.getElementById('cell-63-70'), document.getElementById('cell-64-71'), document.getElementById('cell-65-72'),
+        document.getElementById('cell-66-80'), document.getElementById('cell-67-81'), document.getElementById('cell-68-82'),
+    ], [
+        document.getElementById('cell-70-63'), document.getElementById('cell-71-64'), document.getElementById('cell-72-65'),
+        document.getElementById('cell-73-73'), document.getElementById('cell-74-74'), document.getElementById('cell-75-75'),
+        document.getElementById('cell-76-83'), document.getElementById('cell-77-84'), document.getElementById('cell-78-85'),
+    ], [
+        document.getElementById('cell-80-66'), document.getElementById('cell-81-67'), document.getElementById('cell-82-68'),
+        document.getElementById('cell-83-76'), document.getElementById('cell-84-77'), document.getElementById('cell-85-78'),
+        document.getElementById('cell-86-86'), document.getElementById('cell-87-87'), document.getElementById('cell-88-88'),
+]];
 
+/**
+ * All the sudoku cell dom elements arranged in a 2d array box-wise!
+ */
+sudokuBoxWiseEls = [[
+        document.getElementById('cell-00-00'), document.getElementById('cell-01-01'), document.getElementById('cell-02-02'),
+        document.getElementById('cell-10-03'), document.getElementById('cell-11-04'), document.getElementById('cell-12-05'),
+        document.getElementById('cell-20-06'), document.getElementById('cell-21-07'), document.getElementById('cell-22-08'),
+    ], [
+        document.getElementById('cell-03-10'), document.getElementById('cell-04-11'), document.getElementById('cell-05-12'),
+        document.getElementById('cell-13-13'), document.getElementById('cell-14-14'), document.getElementById('cell-15-15'),
+        document.getElementById('cell-23-16'), document.getElementById('cell-24-17'), document.getElementById('cell-25-18'),
+    ], [
+        document.getElementById('cell-06-20'), document.getElementById('cell-07-21'), document.getElementById('cell-08-22'),
+        document.getElementById('cell-16-23'), document.getElementById('cell-17-24'), document.getElementById('cell-18-25'),
+        document.getElementById('cell-26-26'), document.getElementById('cell-27-27'), document.getElementById('cell-28-28'),
+    ], [
+        document.getElementById('cell-30-30'), document.getElementById('cell-31-31'), document.getElementById('cell-32-32'),
+        document.getElementById('cell-40-33'), document.getElementById('cell-41-34'), document.getElementById('cell-42-35'),
+        document.getElementById('cell-50-36'), document.getElementById('cell-51-37'), document.getElementById('cell-52-38'),
+    ], [
+        document.getElementById('cell-33-40'), document.getElementById('cell-34-41'), document.getElementById('cell-35-42'),
+        document.getElementById('cell-43-43'), document.getElementById('cell-44-44'), document.getElementById('cell-45-45'),
+        document.getElementById('cell-53-46'), document.getElementById('cell-54-47'), document.getElementById('cell-55-48'),
+    ], [
+        document.getElementById('cell-36-50'), document.getElementById('cell-37-51'), document.getElementById('cell-38-52'),
+        document.getElementById('cell-46-53'), document.getElementById('cell-47-54'), document.getElementById('cell-48-55'),
+        document.getElementById('cell-56-56'), document.getElementById('cell-57-57'), document.getElementById('cell-58-58'),
+    ], [
+        document.getElementById('cell-60-60'), document.getElementById('cell-61-61'), document.getElementById('cell-62-62'),
+        document.getElementById('cell-70-63'), document.getElementById('cell-71-64'), document.getElementById('cell-72-65'),
+        document.getElementById('cell-80-66'), document.getElementById('cell-81-67'), document.getElementById('cell-82-68'),
+    ], [
+        document.getElementById('cell-63-70'), document.getElementById('cell-64-71'), document.getElementById('cell-65-72'),
+        document.getElementById('cell-73-73'), document.getElementById('cell-74-74'), document.getElementById('cell-75-75'),
+        document.getElementById('cell-83-76'), document.getElementById('cell-84-77'), document.getElementById('cell-85-78'),
+    ], [
+        document.getElementById('cell-66-80'), document.getElementById('cell-67-81'), document.getElementById('cell-68-82'),
+        document.getElementById('cell-76-83'), document.getElementById('cell-77-84'), document.getElementById('cell-78-85'),
+        document.getElementById('cell-86-86'), document.getElementById('cell-87-87'), document.getElementById('cell-88-88'),
+]];
 
 /**
  * Called by the "Start" button.
@@ -215,7 +206,7 @@ const startGame = (freshGrid = false) => {
     }, 250);
 
     timerWrapperElem.style.display = 'block';
-    startElem.style.display = 'none';
+    // startElem.style.display = 'none';
     resetElem.style.display = 'block';
     startDiffElem.style.display = 'block';
     
@@ -251,10 +242,113 @@ const startGameWithDiffGrid = () => {
 };
 
 /**
- * Checks if the game is finished!
+ * Ends the game timer, hides the sudoku grid and shows the
+ * user that the game is finished.
+ */
+const finishGame = () => {
+    menuElem.style.display = 'block';
+    gameAreaElem.style.display = 'none';
+
+    clearInterval(window.gameTimerInterval);
+    document.querySelector('#menu-text').innerHTML = 'Congratz! you finished the game in ' + timerElem.innerHTML;
+    gameStarted = false;
+};
+
+const markCellsMatchingValueInArr = (arr) => {
+    let valueArr = [];
+    let errors = false;
+
+    arr.forEach ((elem) => {
+        let cellInputElem = elem.querySelector('.sudoku-grid__box__cell__input');
+        let cellInputVal = cellInputElem.value;
+
+        let matchesFound = false;
+
+        if(!elem.dataset.error){
+            elem.querySelector('.sudoku-grid__box__cell__display').style.color = '#000000';
+        }
+
+        valueArr.forEach ((valElem) => {
+            if (cellInputVal == valElem.value && cellInputVal != 0) {
+                if (elem.querySelector('.sudoku-grid__box__cell__input').disabled == false) {
+                    elem.querySelector('.sudoku-grid__box__cell__display').style.color = '#ff0000';
+                    elem.setAttribute('data-error', true);
+                }
+
+                // If there is already an element in the elements array,
+                // mark it red.
+                if (
+                    valElem.elements.length == 1
+                    && valElem.elements[0].querySelector('.sudoku-grid__box__cell__input').disabled == false) {
+                    valElem.elements[0].querySelector('.sudoku-grid__box__cell__display').style.color = '#ff0000';
+                    valElem.elements[0].setAttribute('data-error', true);
+                }
+
+                valElem.elements.push(elem);
+                matchesFound = true;
+                errors = true;
+
+                return;
+            }
+        });
+
+        if (!matchesFound) {
+            valueArr.push({
+                value: cellInputVal,
+                elements: [elem]
+            });
+        }
+    });
+
+    return errors;
+};
+
+/**
+ * Used for checking whether the present user input is a valid entry according
+ * to the progress so far.
+ * 
+ * @param {HTMLElement} elem - The element with the user input, that is to be checked 
+ * 
+ * @returns {Boolean} whether the input is valid or not.
  */
 const checkSolution = () => {
+    let emptyCells = 0;
+    let boxError = false;
+    let rowError = false;
+    let colError = false;
 
+    sudokuEls.forEach((row) => {
+        row.forEach((elem) => {
+            elem.removeAttribute('data-error');
+
+            let val = elem.querySelector('.sudoku-grid__box__cell__input').value;
+
+            if (val == undefined || val == null || val == '' || val == '0') {
+                ++emptyCells;
+            }
+        });
+    });
+    
+    for (let i=0; i<9; ++i) {
+        let colArr = [];
+
+        // box
+        boxError = markCellsMatchingValueInArr(sudokuBoxWiseEls[i]);
+
+        // row
+        rowError = markCellsMatchingValueInArr(sudokuEls[i]);
+
+        // column
+        sudokuEls.forEach((row) => {
+            colArr.push(row[i]);
+        });
+
+        colError = markCellsMatchingValueInArr(colArr);
+    }
+
+    if (emptyCells == 0 && !(boxError || rowError || colError)) {
+        finishGame();
+    }
 }
 
 window.addEventListener('mousedown', (event) => {
@@ -310,6 +404,8 @@ for (let i=0; i<gridCellElems.length; ++i) {
 
         if (event.target.value == null || event.target.value == 0){
             cellDisplay.innerHTML = '';
+            checkSolution();
+
             return;
         }
 
@@ -318,9 +414,16 @@ for (let i=0; i<gridCellElems.length; ++i) {
         } else {
             cellInput.value = oldValue;
         }
+
+        // check if the inputs are valid or not
+        checkSolution();
     });
 }
 
-startElem.addEventListener('click', () => { startGame(true) });
+menuOptionStElem.addEventListener('click', () => {
+    menuElem.style.display = 'none';
+    gameAreaElem.style.display = 'flex';
+    startGame(true);
+});
 resetElem.addEventListener('click', () => { resetGame() });
 startDiffElem.addEventListener('click', () => { startGameWithDiffGrid() });

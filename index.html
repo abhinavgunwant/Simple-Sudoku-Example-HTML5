@@ -8,7 +8,7 @@
 </head>
 <body>
     <h1>Simple Sudoku Example Using HTML5</h1>
-    <div id="game-area">
+    <div id="game-area" style="display:none">
         <div id="timer-wrapper" style="display:none">
             Time: 
             <div id="timer">
@@ -18,7 +18,6 @@
 
         <div id="buttons">
             <button id="buttons__reset" style="display:none">Reset</button>
-            <button id="buttons__start">Start</button>
             <button id="buttons__start-different" style="display:none">Start with different problem</button>
         </div>
 
@@ -365,6 +364,18 @@
                     <input class="sudoku-grid__box__cell__input" type="number" value="" max="9" min="1">
                 </div>
             </div>
+        </div>
+    </div>
+
+    <div id="menu">
+        <h2 id="menu-title">
+            Click "Start Game" to play!
+        </h2>
+
+        <div id="menu-text"></div>
+
+        <div id="menu-option">
+            <button id="menu-option__start">Start Game</button>
         </div>
     </div>
     <script src="index.js"></script>
